@@ -1,5 +1,5 @@
 require "task/version"
+require_relative 'task/task'
+require_relative 'task/data_interface'
 
-module Task
-  # Your code goes here...
-end
+module Task; end
