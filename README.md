@@ -10,12 +10,13 @@ An example task lifecycle could be follows:
 1. A task is generated
 2. The task is saved to a backing data store, recording that it has been generated and should be completed.
 3. The task is serialized (as JSON) and passed to another process or host to complete.
-4. The worker process completes the task, marking it as completed in the backing data store.
+4. The worker process begins working on the task, and:
+  * The worker process completes the task, marking it as completed in the backing data store.
 
-OR
+  OR
 
-3. The worker process fails to complete the task.
-4. A subsequent worker can fetch the task from the backing data store and attempts to complete it.
+  * The worker process fails to complete the task.
+  * A subsequent worker can fetch the task from the backing data store and attempts to complete it.
 
 Out of the box, Task uses Cassandra as the backing data store, but other backends could be implemented.
 Cassandra provides stronger durability guarantees than some other data stores (for example, Redis). Additionally,
