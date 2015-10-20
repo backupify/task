@@ -7,15 +7,15 @@ task execution guarantees, or to perform multiple, lightweight tasks within a si
 
 An example task lifecycle could be follows:
 
-1) A task is generated
-2) The task is saved to a backing data store, recording that it has been generated and should be completed.
-2) The task is serialized (as JSON) and passed to another process or host to complete
-3) The worker process completes the task, marking it as completed in the backing data store.
+1. A task is generated
+2. The task is saved to a backing data store, recording that it has been generated and should be completed.
+3. The task is serialized (as JSON) and passed to another process or host to complete.
+4. The worker process completes the task, marking it as completed in the backing data store.
 
 OR
 
-3) The worker process fails to complete the task
-4) A subsequent worker can fetch the task from the backing data store and attempts to complete it.
+3. The worker process fails to complete the task.
+4. A subsequent worker can fetch the task from the backing data store and attempts to complete it.
 
 Out of the box, Task uses Cassandra as the backing data store, but other backends could be implemented.
 Cassandra provides stronger durability guarantees than some other data stores (for example, Redis). Additionally,
@@ -61,7 +61,11 @@ data fields, but is not required.
 To build a task, we invoke the build method:
 
 ```ruby
-file_task = FetchFile.build(id: 'file1', task_list: 'datto.com', external_host: 'datto.com', filename: 'file1.txt')
+file_task = FetchFile.build(
+  id: 'file1',
+  task_list: 'datto.com',
+  external_host: 'datto.com',
+  filename: 'file1.txt')
 ```
 
 Here, the task belongs to the 'datto.com' task list. The ID of the task should be unique across the task list (if one
@@ -69,7 +73,10 @@ is not specified, a UUID will be used). Other provided fields just become part o
 sugar for:
 
 ```ruby
-file_task = FetchFile.new(id: 'file1', task_list: 'datto.com', data: { external_host: 'datto.com', filename: 'file1.txt' })
+file_task = FetchFile.new(
+  id: 'file1',
+  task_list: 'datto.com',
+  data: { external_host: 'datto.com', filename: 'file1.txt' })
 ```
 
 On the task object, the `data_attr_readers` allow access to data fields, so `file_task.data[:external_host]` and
