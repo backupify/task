@@ -100,6 +100,27 @@ module Task
       type.constantize.new(task_hash)
     end
 
+    # Returns the task with the given id
+    # @param [String] task_list
+    # @param [String] task_id
+    # @return [Task::Task|NilClass]
+    def self.find(task_list, id)
+      interface.find(task_list, id)
+    end
+
+    # Returns all tasks for the provided task list
+    # @param [String] task_list
+    # @return [Enumerator::Lazy<Task::Task>]
+    def self.all(task_list)
+      interface.all(task_list)
+    end
+
+    # The Data Interface used
+    # @return [Task::DataInterface::Interface]
+    def self.interface
+      DataInterface::Interface.new
+    end
+
     # Serialized this Task as a hash
     # @return [Hash]
     def as_hash
@@ -109,14 +130,14 @@ module Task
     # Saves this task to the data store.
     # @return [NilClass]
     def save
-      DataInterface::Interface.new.store(self)
+      Task.interface.store(self)
       nil
     end
 
     # Marks this task as complete, removing it from the datastore
     # @return [NilClass]
     def complete
-      DataInterface::Interface.new.delete(task_list, id)
+      Task.interface.delete(task_list, id)
       nil
     end
   end

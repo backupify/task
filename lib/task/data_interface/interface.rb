@@ -13,7 +13,6 @@ module Task::DataInterface
     # * any arguments accepted by the #Cassandra.cluster method, including :port and :hosts
     class_attribute :adapter_builder
     self.adapter_builder = ->(options) do
-      binding.pry
       session = Cassandra.cluster(options).connect(options[:keyspace] || 'tasks')
       CassandraAdapter.new(client: Cassava::Client.new(session))
     end
