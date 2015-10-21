@@ -4,10 +4,10 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'task/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "task"
+  spec.name          = "task_rb"
   spec.version       = Task::VERSION
   spec.authors       = ["Arron Norwell"]
-  spec.email         = ["anorwell@gmail.com"]
+  spec.email         = ["anorwell@datto.com"]
 
   spec.summary       = %q{Task provides a toolbox for generating, tracking and serializing tasks to be performed.}
   spec.homepage      = "datto.com"
