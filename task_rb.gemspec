@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["anorwell@datto.com"]
 
   spec.summary       = %q{Task provides a toolbox for generating, tracking and serializing tasks to be performed.}
-  spec.homepage      = "datto.com"
+  spec.homepage      = "http://datto.com"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
