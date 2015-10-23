@@ -26,5 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'pyper'
   spec.add_dependency 'cassava'
   spec.add_dependency 'virtus'
+  spec.add_dependency 'values'
   spec.add_dependency "activesupport"
 end
