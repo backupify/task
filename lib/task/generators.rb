@@ -1,1 +1,2 @@
-require_relative 'generators/existing_task'
+require_relative 'generator'
+require_relative 'generators/existing_tasks'
