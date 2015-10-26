@@ -9,12 +9,6 @@ module Task::DataInterface
     setup do
       initialize_task_table
 
-      # Default to the 'test_tasks' keyspace
-      Task::DataInterface::Interface.adapter_builder = ->(options) do
-        session = Cassandra.cluster(options.merge(port: 9242)).connect(options[:keyspace] || 'test_tasks')
-        CassandraAdapter.new(client: Cassava::Client.new(session))
-      end
-
       @interface = Task::DataInterface::Interface.new
     end
 

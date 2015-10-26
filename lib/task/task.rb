@@ -62,7 +62,7 @@ module Task
       # @option options [String] :id
       def build(options)
         task_list = options.delete(:task_list)
-        id = options.delete(:id)
+        id = options.delete(:id) || SecureRandom.hex
         new(task_list: task_list, id: id, data: options)
       end
 
