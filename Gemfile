@@ -5,6 +5,7 @@ gemspec
 
 gem 'cassava', :git => 'git@github.com:backupify/cassava.git'
 gem 'pyper', :git => 'git@github.com:backupify/pyper.git'
+gem 'values', :git => 'git@github.com:backupify/values.git'
 
 group :development, :test do
   gem "pry"
