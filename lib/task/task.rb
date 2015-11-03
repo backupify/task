@@ -66,6 +66,17 @@ module Task
         new(task_list: task_list, id: id, data: options)
       end
 
+      # Instantiate an instance of this Task subclass and save it to the datastore.
+      # @param options [Hash] Options to instantiate this Task. :task_list and :id are required;
+      #   other arguments will be passed as data to the task.
+      # @option options [String] :task_list
+      # @option options [String] :id
+      def create(options)
+        task = build(options)
+        task.save
+        task
+      end
+
       # Defines an attr reader instance method for a field in the data hash.
       #
       # @example
@@ -121,6 +132,12 @@ module Task
       DataInterface::Interface.new
     end
 
+    # Executes this task
+    # @param options [Hash] Options specific to the execution of this task
+    def execute(options = {})
+      raise NotImplementedError.new('execute method not implemented')
+    end
+
     # Serialized this Task as a hash
     # @return [Hash]
     def as_hash
@@ -133,6 +150,7 @@ module Task
       Task.interface.store(self)
       nil
     end
+
 
     # Marks this task as complete, removing it from the datastore
     # @return [NilClass]
