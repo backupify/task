@@ -38,7 +38,7 @@ module Task
         end
 
         should 'reserialize the class of the task' do
-          assert_equal @task.class, @recreated.class
+          assert_kind_of @task.class, @recreated
         end
 
         should 'raise an error if the serialized task class does not exist' do
