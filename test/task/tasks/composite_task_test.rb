@@ -12,6 +12,7 @@ module Task::Tasks
 
       def execute(opts = {})
         self.class.executed_count += 1
+        id
       end
 
       data_attr_reader :test_field
@@ -45,6 +46,14 @@ module Task::Tasks
         CompositeTask.build(child_task_list: 'a', task_list: 'x').execute
 
         assert_equal 2, ExampleTask.executed_count
+      end
+
+      should 'return the results of each executed child task' do
+        ExampleTask.create(task_list: 'a', id: '1')
+        ExampleTask.create(task_list: 'a', id: '2')
+
+        child_ids = CompositeTask.build(child_task_list: 'a', task_list: 'x').execute
+        assert_equal %w(1 2), child_ids
       end
     end
   end
