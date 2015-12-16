@@ -23,8 +23,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "minitest"
   spec.add_development_dependency "minitest-reporters"
 
-  spec.add_dependency 'pyper'
-  spec.add_dependency 'cassava'
+  spec.add_dependency 'pyper_rb', '~> 1.0.0'
+  spec.add_dependency 'cassava_rb'
   spec.add_dependency 'virtus'
   spec.add_dependency 'values'
   spec.add_dependency "activesupport"
