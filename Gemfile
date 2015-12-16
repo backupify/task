@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in task.gemspec
 gemspec
 
-gem 'cassava', :git => 'git@github.com:backupify/cassava.git'
-gem 'pyper', :git => 'git@github.com:backupify/pyper.git'
+gem 'cassava_rb', :git => 'git@github.com:backupify/cassava.git'
+gem 'pyper_rb', :git => 'git@github.com:backupify/pyper.git'
 gem 'values', :git => 'git@github.com:backupify/values.git'
 
 group :development, :test do
