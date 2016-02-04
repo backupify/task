@@ -1,5 +1,7 @@
 # Task
 
+[![Build Status](https://travis-ci.org/backupify/task.svg?branch=master)](https://travis-ci.org/backupify/task)
+
 Task provides a toolbox for generating, tracking and serializing tasks to be performed.
 It is NOT a job queuing framework, a la resque or qless, and does not provide ways to execute tasks
 in a distributed fashion. Rather, Task could be used with such a framework to provide "at-least-once"
