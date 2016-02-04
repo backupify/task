@@ -13,9 +13,9 @@ class Minitest::Should::TestCase
   end
 end
 
+POOL = {}
 def session_for_keyspace(keyspace = 'test_tasks')
-  c = Cassandra.cluster(port: 9242)
-  c.connect(keyspace)
+  POOL[keyspace] ||= Cassandra.cluster(port: 9242).connect(keyspace)
 end
 
 def initialize_task_table
